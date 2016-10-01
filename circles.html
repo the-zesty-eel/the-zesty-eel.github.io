@@ -4,7 +4,7 @@
 
 
 
-<canvas id="myCanvas" width="700px" height="700px" style="border:10px groove red" 
+<canvas id="myCanvas" width="250px" height="250px" style="border:10px groove red" 
 >
 	
 </canvas>
@@ -18,7 +18,7 @@ function circles(){
 		var context = canvas.getContext("2d")
 		for (var i = 0; i < 7; i ++) {
 			context.beginPath()
-			context.arc(350, 350, i * 50, 0, 2*Math.PI)
+			context.arc(125, 125, i * 10, 0, 2*Math.PI)
 			context.strokeStyle = colors[Math.floor(Math.random()*6)]
 			context.lineWidth = 25
 			context.stroke()
