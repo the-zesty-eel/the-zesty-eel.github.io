@@ -18,7 +18,7 @@ function circles(){
 		var context = canvas.getContext("2d")
 		for (var i = 0; i < 7; i ++) {
 			context.beginPath()
-			context.arc(250, 250, i * 25, 0, 2*Math.PI)
+			context.arc(250, 250, i * 35, 0, 2*Math.PI)
 			context.strokeStyle = colors[Math.floor(Math.random()*6)]
 			context.lineWidth = 5
 			context.stroke()
