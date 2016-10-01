@@ -1,1 +1,35 @@
+<html>
 
+<h1>Awesome Circles!</h1>
+
+
+
+<canvas id="myCanvas" width="700px" height="700px" style="border:10px groove red" 
+>
+	
+</canvas>
+
+<script>
+	
+
+function circles(){
+		var colors = ["red","orange","yellow","lime","dodgerblue","magenta"]
+		var canvas = document.getElementById('myCanvas')
+		var context = canvas.getContext("2d")
+		for (var i = 0; i < 7; i ++) {
+			context.beginPath()
+			context.arc(350, 350, i * 50, 0, 2*Math.PI)
+			context.strokeStyle = colors[Math.floor(Math.random()*6)]
+			context.lineWidth = 25
+			context.stroke()
+	}
+	setTimeout(circles, 250)
+		}}
+		
+		
+}
+
+circles()
+</script>
+
+</html>
