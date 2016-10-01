@@ -1,37 +1,8 @@
 <html>
 
-<h1> Which presidential candidate are you?</h1>
-<h2>The quiz by Ti2 </h2>
 
-Do you want to build a snowman?<br><br>
-
-
-<input type="radio" name="question1" value="Hillary Clinton">yes <br><br>
-<input type="radio" name="question1" value="Gary Johnson">no<br><br>
-<input type="radio" name="question1" value="Donald Trump">yes but we have to build a wall around it<br><br>
-<button onclick="return who_am_i();">Submit</button>
-
-<br><br>
-
-
-<script type="text/javascript">
+<br>
+<a href="circles.html">Awesome Circles!</a>
 	
-var president = ' '
-
-	function who_am_i(){
-	var mylist = document.getElementsByName("question1")
-	for(i = 0; i < 3; i ++){
-		if(mylist[i].checked) {
-			var president = mylist[i].value
-			document.getElementById("result").innerText = "You are " + president + '.';
-
-		}
-	}
-}
-
-
-</script>
-
-<div id="result"></div>
-
+	
 </html>
