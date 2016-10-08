@@ -1,0 +1,53 @@
+<html>
+
+
+<canvas id="myCanvas" width="500px" height="500" style="border : 10px dashed red">
+</canvas>
+
+<script>
+	function draw_circle(x, y, radius, color){
+		var canvas = document.getElementById("myCanvas")
+		var context = canvas.getContext("2d")
+
+		context.beginPath()
+		context.arc(x, y, radius, 0, Math.PI*2)
+		context.fillStyle = color
+		context.fill()
+		context.closePath()
+	}
+	//draw_circle(50, 50, 50, "red")
+	function my_cool_animation(num_circles){
+		for(var i = 0; i < num_circles; i++){
+			var colors = ["red","orange","yellow","lime","dodgerblue","magenta"]
+			var which_color = colors[Math.floor(Math.random()*6)]
+			var x = Math.floor(Math.random()*500)
+			var y = Math.floor(Math.random()*500)
+			var radius = Math.floor(Math.random()*100)
+			draw_circle(x, y, radius, which_color)
+		}
+		if(is_paused == false && fastforward == true){
+			setTimeout(my_cool_animation, 100, 1)
+		}
+		if(is_paused == false && fastforward == false)
+			setTimeout(my_cool_animation, 500, 1)
+
+	}	
+	var fastforward = false
+	var is_paused = false
+	my_cool_animation(1);
+
+	function clear_canvas() {
+			var canvas = document.getElementById("myCanvas")
+			var context = canvas.getContext("2d")
+			context.clearRect(0, 0, 500, 500)
+			console.log("hello")
+	}
+</script>
+<br><br>
+<button onclick="is_paused = false; my_cool_animation(1)">Play</button>
+<button onclick="is_paused = true">Pause</button>
+<button onclick="clear_canvas()">Clear</button>
+<button onclick="fastforward = true">fast forward</button>
+<button onclick="fastforward = false">slow down</button>
+
+</html>
