@@ -1,6 +1,4 @@
-
-
-  <html>
+<html>
 
 <canvas id="myCanvas" 
         width="500px"
@@ -117,6 +115,8 @@ function draw() {
      dead = true
     }
     if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true) {
+      var snd = new Audio("cheering.wav"); // buffers automatically when created
+      snd.play();
       score += 1000
       vy = 1
       can_hit = false
