@@ -35,6 +35,7 @@ var dead = false
 var score = 0
 
 var can_hit = true
+var can_go_in = true
 
 //paddle properteis
 //width / height
@@ -109,10 +110,15 @@ function draw() {
     if (x <= 20){
       vx = 1
     }
-    if (y > 500){
+    if (y > 500 ){
      context.font = "60px cursive"
      context.fillText("Game Over!", 100, 250)
      dead = true
+     if (can_go_in == true)
+       var snd2 = new Audio("Sad Trombone.wav"); // buffers automatically when created
+       snd2.play();
+       can_go_in = false
+     
     }
     if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true) {
       var snd = new Audio("cheering.wav"); // buffers automatically when created
