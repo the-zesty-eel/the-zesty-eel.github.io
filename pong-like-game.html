@@ -1,0 +1,178 @@
+<html>
+
+<canvas id="myCanvas" 
+        width="500px"
+        height="500px"
+        style="border: 1px solid black"
+        onclick="">
+</canvas>
+
+<h3 id="ballPosition"></h3>
+
+<script>
+
+
+
+var canvas = document.getElementById("myCanvas")
+var context = canvas.getContext("2d")
+
+var score = 0
+
+// h3 element that will describe the ball's current position.
+var ballText = document.getElementById("ballPosition")
+
+// Ball properties.
+var ballRadius = 20
+// Initial position.
+var x = 250
+var y = 450
+// Velocity.
+var vx = 1
+var vy = -1
+
+var score = 0
+
+var can_hit = true
+
+//paddle properteis
+//width / height
+var paddleWidth = 100
+var paddleHeight = 30
+// x / y
+var paddleX = 200
+var paddleY = canvas.height - paddleHeight
+// velocity
+pvx = 0
+var svx = 3
+
+//score rectangle properteis
+var rectX = 200
+
+
+function scoreRect(){
+  context.beginPath()
+  context.rect(rectX, 0, 100, 20)
+  context.fillStyle = "blue"
+  context.fill()
+  context.closePath()
+}
+
+function drawBall() {
+    context.beginPath()
+    context.arc(x, y, ballRadius, 0, Math.PI*2)
+    context.fillStyle = "red"
+    context.fill()
+    context.closePath()
+    ballText.innerText = "your score is " + score
+}
+
+function drawPaddle(){
+  context.beginPath()
+  context.rect(paddleX, paddleY, paddleWidth, paddleHeight)
+  context.fillStyle = "red"
+  context.fill()
+  context.closePath()
+}
+
+
+
+
+function draw() {
+    // Clear the canvas.
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    drawBall()
+    drawPaddle()
+    scoreRect()
+
+    
+    rectX += svx
+    x += vx
+    y += vy
+    paddleX += pvx
+    if (rectX >= 400){
+      svx = -3
+    }
+    if (rectX <= 0){
+      svx = 3
+    }
+
+    if (x >= 480){
+      vx = -1
+    }
+    if (y == 20 && x < rectX || y == 20 && x > rectX + 100){
+      vy = 1
+    }
+    if (x <= 20){
+      vx = 1
+    }
+    if (y > 500){
+      x = 250
+      y = 470
+      can_hit = true
+      paddleX = 200
+      vx = 1
+      vy = -1
+      score = 0
+      
+    }
+    if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true) {
+      score += 1000
+      vy = 1
+      can_hit = false
+    }   
+
+
+    if (y > 450 && x < paddleX + paddleWidth && x > paddleX){
+      vy = -1  
+      vx += pvx
+      can_hit = true
+    }
+    if (leftPressed == true && paddleX > 0){
+      pvx = -2
+    }
+    else if (rightPressed == true&& paddleX < 400){
+      pvx = 2
+    }
+    else{
+      pvx = 0
+    }
+}   
+    
+    
+var rightPressed = false
+var leftPressed = false       
+
+function keyDownHandler(e){
+  console.log(e.keyCode)
+  if (e.keyCode == 39){
+    rightPressed = true
+  }
+  if (e.keyCode == 37){
+    leftPressed = true
+  }
+}
+
+function keyUpHandler(e){
+  console.log(e.keyCode)
+  if (e.keyCode == 39){
+    rightPressed = false
+  }
+  if (e.keyCode == 37){
+    leftPressed = false
+  }
+}
+document.addEventListener("keydown", keyDownHandler, false)
+document.addEventListener("keyup", keyUpHandler, false)
+
+
+
+
+// Draw 1 frame of the animation.
+draw()
+setInterval(draw, 10)
+// How do we keep drawing? Didn't we learn that last week?
+ //
+
+</script>
+
+</html>
