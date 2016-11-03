@@ -27,8 +27,8 @@ var ballRadius = 20
 var x = 250
 var y = 450
 // Velocity.
-var vx = 1
-var vy = -1
+var vx = 2
+var vy = -2
 
 var dead = false
 
@@ -46,7 +46,7 @@ var paddleX = 200
 var paddleY = canvas.height - paddleHeight
 // velocity
 pvx = 0
-var svx = 3
+var svx = 4
 
 //score rectangle properteis
 var rectX = 200
@@ -95,20 +95,20 @@ function draw() {
     y += vy
     paddleX += pvx
     if (rectX >= 400){
-      svx = -3
+      svx = -4
     }
     if (rectX <= 0){
-      svx = 3
+      svx = 4
     }
 
     if (x >= 480){
-      vx = -1
+      vx = -2
     }
     if (y == 20 && x < rectX || y == 20 && x > rectX + 100){
-      vy = 1
+      vy = 2
     }
     if (x <= 20){
-      vx = 1
+      vx = 2
     }
     if (y > 500 ){
      context.font = "60px cursive"
@@ -124,21 +124,21 @@ function draw() {
       var snd = new Audio("cheering.wav"); // buffers automatically when created
       snd.play();
       score += 1000
-      vy = 1
+      vy = 2
       can_hit = false
     }   
 
 
     if (y > 450 && x < paddleX + paddleWidth && x > paddleX){
-      vy = -1  
+      vy = -2  
       vx += pvx
       can_hit = true
     }
     if (leftPressed == true && paddleX > 0){
-      pvx = -2
+      pvx = -3
     }
     else if (rightPressed == true&& paddleX < 400){
-      pvx = 2
+      pvx = 3
     }
     else{
       pvx = 0
