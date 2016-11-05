@@ -1,0 +1,35 @@
+<html>
+
+<style>
+html {
+	background-color: dodgerblue;
+}
+
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+function Random_number(num1, num2){
+	var inbetween = num2 - num1
+	var the_false_number = Math.floor(Math.random()*inbetween)	
+	return the_false_number + num1
+
+}
+var places = [
+['Cookietown (Walters)', 'http://api.openweathermap.org/data/2.5/weather?q=cookietown,%20US&APPID=ff20168398af0336f31ec634073a9303&units=imperial'],
+['Boston', 'http://api.openweathermap.org/data/2.5/weather?q=Boston,%20US&APPID=ff20168398af0336f31ec634073a9303&units=imperial'],
+['Orlando', 'http://api.openweathermap.org/data/2.5/weather?q=Orlando,%20US&APPID=ff20168398af0336f31ec634073a9303&units=imperial]'],
+['London', 'http://api.openweathermap.org/data/2.5/weather?q=London,%20UK&APPID=ff20168398af0336f31ec634073a9303&units=imperial'],
+['Paris', 'http://api.openweathermap.org/data/2.5/weather?q=Paris,%20France&APPID=ff20168398af0336f31ec634073a9303&units=imperial']
+
+]
+var which_place = Random_number(0, places.length - 1)
+var which_weather = $.getJSON(which_place, function(data) { console.log(data) })
+var temp = which_weather.responseJSON.main.temp
+document.write(places[which_place[0]])
+document.write(temp)
+
+// var which_weather = $.getJSON(random_place, function(data) { console.log(data) })
+// which_weather.responseJSON.main.temp
+</script>
+</html>
