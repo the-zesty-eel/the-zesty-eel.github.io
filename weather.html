@@ -23,7 +23,7 @@ var places = [
 ['Paris', 'http://api.openweathermap.org/data/2.5/weather?q=Paris,%20France&APPID=ff20168398af0336f31ec634073a9303&units=imperial']
 
 ]
-var which_place = Random_number(0, places.length - 1)
+var which_place = places[Random_number(0, places.length - 1)][0]
 var which_weather = $.getJSON(which_place, function(data) { console.log(data) })
 var temp = which_weather.responseJSON.main.temp
 document.write(places[which_place[0]])
