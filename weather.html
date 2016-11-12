@@ -1,0 +1,75 @@
+Type in a place, and this will give you the weather!
+
+
+
+<form action='#'>
+  <input id="mytext" type="text" value="">
+</form>
+
+<div id="weather"></div>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script>
+
+var x
+
+$("#mytext").change(function() {
+
+  console.log(document.getElementById("mytext").value)
+  var weatherData = "http://api.openweathermap.org/data/2.5/weather?"
+
+  $.getJSON(weatherData, {
+    q: document.getElementById("mytext").value,
+    APPID: "ff20168398af0336f31ec634073a9303",
+    units: "imperial"
+  }).done(function(data) {
+    //x = data
+    console.log("B", Date.now())
+    $("<p>" + 
+      data.name + ": " +
+      data.weather[0].description + " and " +
+      data.main.temp + "°F" + "</p>"
+     ).appendTo("#weather")
+  })
+
+  //s$("#myform")[0].reset();
+  // get the weather div and empty it
+  var weather_div = document.getElementById('weather')
+  weather_div.innerHTML = ""
+})
+
+
+
+console.log("A", Date.now())
+
+/*
+function get_weather(bob){
+  if (bob.keyCode=13){
+    
+}}
+*/
+console.log('C', Date.now())
+
+/*
+var weatherForecast = "http://api.openweathermap.org/data/2.5/forecast?"
+$.getJSON(weatherForecast, {
+  q: "Boston,MA",
+  APPID: "ff20168398af0336f31ec634073a9303",
+  units: "imperial"
+})
+.done(function(data) {
+  // Grab the data so we can play with it in the Javascript console.
+  x = data
+  for (var i = 0; i < data.list.length; i++) {
+    $("<p>" +
+      data.list[i].dt_txt + " " +
+      data.list[i].weather[0].description + " and " +
+      data.list[i].main.temp + "°F" + "</p>"
+    ).appendTo("#weather")
+  }
+})
+*/
+
+//document.addEventListener("keydown", get_weather, true)
+</script>
