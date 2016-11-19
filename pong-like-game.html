@@ -113,13 +113,15 @@ function draw() {
     if (x <= 20){
       vx = 2
     }
-    if (y >= 500 && can_go_in == true){
+    if (y >= 500){
      context.font = "60px cursive"
      context.fillText("Game Over!", 100, 250)
      dead = true
-     var snd2 = new Audio("Sad Trombone.wav"); // buffers automatically when created
-     snd2.play();
-     can_go_in = false
+     if (can_go_in == true){
+             var snd2 = new Audio("Sad Trombone.wav"); // buffers automatically when created
+             snd2.play();
+             can_go_in = false
+     }
      
     }
     if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true) {
