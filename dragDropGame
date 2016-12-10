@@ -1,0 +1,99 @@
+<html>
+
+Drag the pictures to the correct boxes to win!
+
+
+<style>
+.pickobj{
+    padding: 10px;
+    background-color: white;
+    border: 1px dashed black;
+}
+
+.pickbox {
+    float: left; 
+    width: 100px; 
+    height: 100px;
+    margin: 15px;
+    border: 1px solid black;
+}
+.dropbox {
+    float: left; 
+    width: 100px; 
+    height: 100px;
+    margin: 15px;
+    border: 1px dashed black;
+}
+
+.correct{
+    background-color: green;
+}
+
+.wrong{
+    background-color: red;
+}
+</style>
+
+<div class="pickbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p class="pickobj" 
+        ondragstart="dragStart(event)" 
+        draggable="true" 
+        id="dragtarget1" 
+        data="1">
+        <img src="https://supple.com.au/temp/pokemon/948297-meowth.jpg" width = 100px float:center>
+
+    </p>
+</div>
+
+<div class="pickbox" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <p class="pickobj" 
+        ondragstart="dragStart(event)" 
+        draggable="true" 
+        id="dragtarge2" 
+        data="2">
+        <img src="http://vignette2.wikia.nocookie.net/pokemon/images/5/55/001Bulbasaur_AG_anime_3.png/revision/latest?cb=20150101074717" width=100px float:center>
+    </p>
+</div>
+
+<div class="dropbox" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        data="1">
+        Meowth
+</div>
+<div class="dropbox" 
+        ondrop="drop(event)" 
+        ondragover="allowDrop(event)" 
+        data="2">
+        Bulbasaur
+</div>
+
+<script>
+function dragStart(event) {
+    event.dataTransfer.setData("id", event.target.id);
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    var id = event.dataTransfer.getData("id");
+    var content = document.getElementById(id);
+    var dragval = content.getAttribute("data").valueOf();
+    var dropval = event.target.getAttribute("data").valueOf();
+
+
+    if(dragval == dropval){
+        window.alert('Correct!')
+    }
+    else{
+        window.alert('Wrong!')
+    }
+
+    event.target.appendChild(content);
+}
+</script>
+
+</html>
