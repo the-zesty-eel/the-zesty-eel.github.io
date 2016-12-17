@@ -77,11 +77,11 @@ function drawBall() {
     context.closePath()
     ballText.innerText = "your score is " + score
 }
-
+var ballColor = "#ff0000"
 function drawPaddle(){
   context.beginPath()
   context.rect(paddleX, paddleY, paddleWidth, paddleHeight)
-  context.fillStyle = "red"
+  context.fillStyle = ballColor
   context.fill()
   context.closePath()
 }
@@ -106,6 +106,7 @@ function draw() {
   if (dead == false){
       drawPaddle()
       scoreRect()
+      ballColor = "#6eb351"
   }
     
     rectX += svx
