@@ -100,12 +100,13 @@ function drawPaddle(){
 function draw() {
     // Clear the canvas.
     context.clearRect(0, 0, canvas.width, canvas.height)
-    if (dead == false){
+    drawLine()
+
+  if (dead == false){
       drawBall()
       drawPaddle()
       scoreRect()
   }
-drawLine()
     
     rectX += svx
     x += vx
