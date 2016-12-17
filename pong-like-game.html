@@ -106,9 +106,11 @@ function draw() {
   if (dead == false){
       drawPaddle()
       scoreRect()
-      ballColor = "#6eb351"
+      
   }
-    
+  else {
+  ballColor = "#6eb351"  
+  }  
     rectX += svx
     x += vx
     y += vy
