@@ -79,6 +79,14 @@ function drawPaddle(){
   context.fill()
   context.closePath()
 }
+ function drawLine(){
+  context.strokeStyle="#ffffff"
+  context.beginPath()
+  context.lineWidth = 10
+  context.moveTo(250, 500)
+  context.lineTo(250, 0)
+  context.stroke();
+}       
 
 
 
@@ -91,7 +99,7 @@ function draw() {
       drawPaddle()
       scoreRect()
   }
-
+drawLine()
     
     rectX += svx
     x += vx
@@ -160,7 +168,6 @@ var rightPressed = false
 var leftPressed = false       
 
 function keyDownHandler(e){
-  console.log(e.keyCode)
   if (e.keyCode == 39){
     rightPressed = true
   }
@@ -170,7 +177,6 @@ function keyDownHandler(e){
 }
 
 function keyUpHandler(e){
-  console.log(e.keyCode)
   if (e.keyCode == 39){
     rightPressed = false
   }
