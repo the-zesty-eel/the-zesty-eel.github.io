@@ -68,20 +68,20 @@ function scoreRect(){
   context.fill()
   context.closePath()
 }
+var ballColor = "#ff0000"
 
 function drawBall() {
     context.beginPath()
     context.arc(x, y, ballRadius, 0, Math.PI*2)
-    context.fillStyle = "red"
+    context.fillStyle = ballColor
     context.fill()
     context.closePath()
     ballText.innerText = "your score is " + score
 }
-var ballColor = "#ff0000"
 function drawPaddle(){
   context.beginPath()
   context.rect(paddleX, paddleY, paddleWidth, paddleHeight)
-  context.fillStyle = ballColor
+  context.fillStyle = "red"
   context.fill()
   context.closePath()
 }
