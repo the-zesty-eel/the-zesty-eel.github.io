@@ -96,21 +96,22 @@ function drawPaddle(){
 
 
 
-
+var timer = 10
 function draw() {
     // Clear the canvas.
     context.clearRect(0, 0, canvas.width, canvas.height)
     drawLine()
-      drawBall()
 
   if (dead == false){
       drawPaddle()
       scoreRect()
-    drawBall()
+      drawBall()
       
+    }  
   
-  
-  }  
+  if (dear == true){
+    timer = 1000000000
+  }
     rectX += svx
     x += vx
     y += vy
@@ -202,7 +203,7 @@ document.addEventListener("keyup", keyUpHandler, false)
 
 // Draw 1 frame of the animation.
 draw()
-setInterval(draw, 10)
+setInterval(draw, timer)
 // How do we keep drawing? Didn't we learn that last week?
  //
 
