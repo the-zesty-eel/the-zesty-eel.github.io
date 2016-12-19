@@ -164,7 +164,7 @@ function draw() {
      }
      
     }
-    if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true) {
+    if (y <= 40 && x > rectX && x < rectX + 100 && can_hit == true && dead == false) {
       var snd = new Audio("cheering.wav"); // buffers automatically when created
       snd.play();
       score += 1000
