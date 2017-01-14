@@ -1,0 +1,75 @@
+<html>
+
+<h1>PowerballSimulator</h1>
+
+
+<h5>type in how many times you want to play and your balence will show up on screen, using the jackpot of $3,000,000(does not use any real money)</h5>
+
+<form action='#'>
+  <input id="mytext" type="text" value="">
+</form>
+
+
+<button onclick="lottoGo()">Go!</button>
+
+<div id = "balence"></div>
+
+<script>
+
+function random_number(num1, num2){
+	var inbetween = num2 - num1
+	var the_false_number = Math.floor(Math.random()*inbetween)	
+	return the_false_number + num1
+
+}
+
+function lottoGo(){
+	var balence = 0
+	i = 0
+	while (i < document.getElementById("mytext").value - 0){
+		balence -= 2
+		var chance1 = random_number(1, 292201339)
+		var chance2 = random_number(1, 1168805353)
+		var chance3 = random_number(1, 91312953)
+		var chance4 = random_number(1, 3652518)
+		var chance5 = random_number(1, 1449412)
+		var chance6 = random_number(1, 57976)
+		var chance7 = random_number(1, 70134)
+		var chance8 = random_number(1, 9199)
+		var chance9 = random_number(1, 3833)
+		if (chance1 == 1){
+			balence += 3000000
+		}
+		else if (chance2 <= 100){
+				balence += 1000000
+			} else if (chance3 <= 100){
+				balence += 50000
+			} else if (chance4 <= 100){
+				balence += 100
+			} else if (chance5 <= 100){
+				balence += 100
+			} else if (chance6 <= 100){
+				balence += 7
+			} else if (chance7 <= 100){
+					balence += 7
+			} else if(chance8 <= 100) {
+					balence += 4
+			}else {
+				if (chance9 <= 100){
+					balence += 4
+			}
+		
+		i ++
+		var stuff = document.getElementById("balence")
+		stuff.innerHTML = "Balence : $" + balence
+
+	}
+}}
+
+	
+
+
+</script>
+
+
+</html>
