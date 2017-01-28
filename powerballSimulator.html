@@ -17,12 +17,12 @@
 <script>
 
 function random_number(num1, num2){
-	var inbetween = num2 - num1
-	var the_false_number = Math.floor(Math.random()*inbetween)	
-	return the_false_number + num1
+  num1 -= 1
+  var inbetween = num2 - num1
+  var the_false_number = Math.floor(Math.random()*inbetween+1)  
+  return (the_false_number + num1)
 
 }
-
 function lottoGo(){
 	var balence = 0
 	i = 0
